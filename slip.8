@@ -1,0 +1,82 @@
+Q1
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    alert("Exams are near, have you started preparing for?")
+    var n1= prompt("enter first no ");
+    var n2=prompt("enter second number");
+    var sum=Number(n1)+Number(n2);
+   confirm("additon of two no is " +sum);
+  </script>
+</body>
+</html>
+
+java script
+
+<!DOCTYPE html>
+<html>
+<head>
+<title>sum</title>
+</head>
+<body>
+
+
+<script>
+alert("exam are comming are you started study");
+
+let num1=prompt("enter first number");
+let num2=prompt("enter second number");
+let msg ="are you sure want to add ${num1} and ${num2}";
+
+let confirm = confirm(msg);
+
+if(confirm){
+Num1=parseInt(num1);
+Num2=parseInt(num2);
+let sum=num1+num2;
+
+alert("The sum of ${num1} and ${num2} is ${sum}.");
+}
+</script>
+</body>
+</html>
+
+Q2
+
+Import pandas as pd
+From mlxtend.preprocessing import TransactionEncoder
+From mlxtend.frequent_patterns import apriori, association_rules
+
+# Load the dataset
+Df = pd.read_csv(‘market_basket.csv’)
+
+# Drop any rows with null values
+Df.dropna(inplace=True)
+
+# Convert categorical values to numeric format
+Te = TransactionEncoder()
+Te_ary = te.fit(df.values).transform(df.values)
+Df = pd.DataFrame(te_ary, columns=te.columns_)
+
+# Generate frequent itemsets
+Frequent_itemsets = apriori(df, min_support=0.01, use_colnames=True)
+
+# Generate association rules
+Rules = association_rules(frequent_itemsets, metric=”lift”, min_threshold=1)
+
+# Display information about the dataset
+Print(“Dataset information:”)
+Print(df.info())
+
+# Display the frequent itemsets
+Print(“\nFrequent itemsets:”)
+Print(frequent_itemsets)
+
+# Display the association rules
+Print(“\nAssociation rules:”)
+Print(rules)

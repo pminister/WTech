@@ -1,0 +1,123 @@
+Q1
+
+<?php
+session_start();
+?>
+
+<!DOCTYPE html>
+<html>
+<head>
+<title>first page</title>
+</head>
+<body>
+
+<form action="slip42.php" method="post">
+<lable for="eno" >ENO:</label>
+<input type="text" name="eno">
+<lable for="ename" >ENAME:</label>
+<input type="text" name="ename">
+<lable for="add" >ADD:</label>
+<input type="text" name="add">
+<input type="submit" name="submit">
+</form>
+</body>
+</html>
+
+
+
+<?php
+session_start();
+
+if(isset($_POST['eno']) && isset($_POST['ename']) && isset($_POST['add'])){
+$_SESSION['eno']=$_POST['eno'];
+$_SESSION['ename']=$_POST['ename'];
+$_SESSION['add']=$_POST['add'];
+
+}
+?>
+
+<!DOCTYPE html>
+<html>
+<head>
+<title>Second page</title</title>
+</head>
+<body>
+
+<form action="slip43.php" method="post">
+
+<lable for="basic" >Basic:</label>
+<input type="text" name="basic">
+<lable for="da" >DA:</label>
+<input type="text" name="da">
+<lable for="hra" >HRA:</label>
+<input type="text" name="hra">
+<input type="submit" name="submit">
+</form>
+</body>
+</html>
+
+
+second page
+
+<?php 
+session_start();
+
+if(isset($_POST['basic']) && isset($_POST['da']) && isset($_POST['hra'])){
+$_SESSION['basic']=$_POST['basic'];
+$_SESSION['da']=$_POST['da'];
+$_SESSION['hra']=$_POST['hra'];
+}
+
+$total = $_SESSION['basic'] + $_SESSION['da'] + $_SESSION['hra'];
+
+?>
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>FINAL PAGE</title>
+</head>
+<body>
+    <h1>EMPLOYEE DETAIL</h1>
+
+    <p>ENO: <?php echo  $_SESSION['eno']; ?></p>
+    <br>
+    <p>ENAME: <?php echo $_SESSION['ename']; ?></p>
+    <br>
+    <p>ADD: <?php echo $_SESSION['add']; ?></p>
+    <br>
+    <p>BASIC: <?php echo $_SESSION['basic']; ?></p>
+    <br>
+    <p>DA: <?php echo $_SESSION['da']; ?></p>
+    <br>
+    <p>HRA: <?php echo $_SESSION['hra']; ?></p>
+    <br>
+    <p>TOTAL: <?php echo $total; ?></p>
+    <br>
+</body>
+</html>
+
+Q2
+
+Import pandas as pd
+Import random
+From sklearn.linear_model import LinearRegression
+# create the dataset
+Fish_species = [‘Tuna’, ‘Salmon’, ‘Trout’, ‘Bass’, ‘Sardine’, ‘Cod’, ‘Mackerel’]
+Weights = []
+For i in range(50):
+Fish_weight = []
+For j in range(7):
+Weight = random.randint(1, 20)
+Fish_weight.append(weight)
+Weights.append(fish_weight)
+Df = pd.DataFrame(weights, columns=fish_species)
+# create the linear regression model
+X = df.iloc[:, :-1] # independent variables
+Y = df.iloc[:, -1] # target variable
+Model = LinearRegression()
+Model.fit(X, y)
+# predict the weight of a new fish species
+New_fish = [[10, 12, 15, 7, 4, 8]] # example input
+Predicted_weight = model.predict(new_fish)
+Print(“Predicted weight:”, predicted_weight)

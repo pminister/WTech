@@ -1,0 +1,139 @@
+Q1
+
+  first page
+
+<!DOCTYPE html>
+<html>
+<head>
+<title>enter details</title>
+</head>
+<body>
+<form action="slip2.php" method="post">
+
+<lable for="fontfamily" >Font-family</label>
+<select name="fontstyle" id="fontstyle">
+<option value="Arial">ARIAL</option>
+<option "Times New Roman">Times new roman</option>
+</select>
+
+<lable for="fontsize" >Fontsize</label>
+<select name="fontsize" id="fontsize">
+<option value="14">14</option>
+<option value="18">18</option>
+</select>
+
+<lable for="fontcolor" >fontcolor</label>
+<input type="color" name="color">
+
+<lable for="bgcolor" >bgcolor</label>
+<input type="color" name="bgcolor">
+
+<input type="submit" name="apply" value="save">
+</form>
+
+</body>
+</html>
+
+Second page 
+
+<?php
+$fontfamily = $_POST['fontstyle'];
+$fontsize = $_POST['fontsize'];
+$fontcolor = $_POST['color'];
+$bgcolor =$_POST['bgcolor'];
+
+
+echo "you selected $fontfamily family";
+
+echo "</br>";
+
+echo "you have selected  $fontsize fontsize";
+
+echo "</br>";
+
+echo "you have selected  $fontcolor fontcolor";
+
+echo "</br>";
+
+echo "you have selected  $bgcolor bgcolor";
+
+
+setcookie("fontfamily",$fontfamily,time()+86400);
+
+setcookie("fontsize",$fontsize,time()+86400);
+
+setcookie("fontcolor",$fontcolor,time()+86400);
+
+setcookie("bgcolor",$bgcolor,time()+86400);
+
+
+echo "</br>";
+echo "</br>";
+echo "</br>";
+
+echo "<button onclick=\"window.location.href='slip21.php';\">APPLY CHANGES</button>";
+
+?>
+
+Third page
+
+<?php
+
+$fontfamily= $_COOKIE['fontfamily'];
+$fontsize = $_COOKIE['fontsize'];
+$fontcolor =$_COOKIE['fontcolor'];
+$bgcolor =$_COOKIE['bgcolor'];
+
+?>
+<!DOCTYPE html>
+<html>
+<head>
+<title>final page</title>
+
+<style>
+body{
+font:<?php echo $fontfamily; ?>
+size:<?php echo $fontsize ; ?>px;
+color:<?php echo $fontcolor ;?>;
+background-color: <?php echo $bgcolor;?>;
+}
+</style>
+</head>
+<body>
+<h1>Pagewithnewsettings</h1>
+<p>This is the page with the new settings.The fontstyle is <?php echo $fontfamily; ?> </p>
+<p>the size is <?php echo $fontsize ; ?> 
+<br>
+the color is <?php echo $fontcolor ;?>
+<br>
+the bgcolor is <?php echo $bgcolor;?>
+
+</body>
+</html>
+
+Q2
+
+Import numpy as np
+Import pandas as pd
+From sklearn.model_selection import train_test_split
+From sklearn.linear_model import LinearRegression
+
+Data = {‘YearsExperience’: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+‘Salary’: [50000, 60000, 70000, 80000, 90000, 100000, 110000, 120000, 130000, 140000]}
+Df = pd.DataFrame(data)
+
+X = df.iloc[:, 0:1].values
+Y = df.iloc[:, 1].values
+
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_state=0)
+
+Print(“X_train:\n”, X_train)
+Print(“y_train:\n”, y_train)
+Print(“X_test:\n”, X_test)
+Print(“y_test:\n”, y_test)
+
+Regressor = LinearRegression()
+Regressor.fit(X_train, y_train)
+
+Print(“Coefficients:”, regressor.coef_)
+Print(“Intercept:”, regressor.intercept_)

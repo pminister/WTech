@@ -1,0 +1,89 @@
+Q1
+first page
+
+<?php
+
+$xml = new DOMDocument();
+
+$xml->load("slip7.xml");
+
+$movies=$xml->getElementsByTagName("movie");
+
+foreach ($movies as $movie)
+{
+$moviNo = $movie->getAttribute("MovieNO");
+$MovieTitle = $movie->getElementsByTagName("MovieTitle")[0]->textContent;
+$ActorName = $movie->getElementsByTagName("ActorName")[0]->textContent;
+$ReleaseYear = $movie->getElementsByTagName("ReleaseYear")[0]->textContent;
+
+echo"movie number is $moviNo <br>";
+echo"movie title is $MovieTitle <br>";
+echo"actor name is $ActorName <br>";
+echo "release year is $ReleaseYear <br>";
+echo"<hr>";
+}
+
+?>
+
+second page
+
+<?xml version ="1.0"?>
+<movies>
+    <movie MovieNo="001">
+        <MovieTitle>3 Idiots</MovieTitle>
+        <ActorName>Aamir Khan</ActorName>
+        <ReleaseYear>2009</ReleaseYear>
+    </movie>
+    <movie MovieNo="002">
+        <MovieTitle>PK</MovieTitle>
+        <ActorName>Aamir Khan</ActorName>
+        <ReleaseYear>2014</ReleaseYear>
+    </movie>
+    <movie MovieNo="003">
+        <MovieTitle>Chennai Express</MovieTitle>
+        <ActorName>Shah Rukh Khan</ActorName>
+        <ReleaseYear>2013</ReleaseYear>
+    </movie>
+    <movie MovieNo="004">
+        <MovieTitle>Bhool Bhulaiyaa</MovieTitle>
+        <ActorName>Akshay Kumar</ActorName>
+        <ReleaseYear>2007</ReleaseYear>
+    </movie>
+    <movie MovieNo="005">
+        <MovieTitle>Singham</MovieTitle>
+        <ActorName>Ajay Devgn</ActorName>
+        <ReleaseYear>2011</ReleaseYear>
+    </movie>
+</movies>
+
+
+Q2
+
+Import pandas as pd
+From mlxtend.preprocessing import TransactionEncoder
+From mlxtend.frequent_patterns import apriori, association_rules
+
+# read the dataset
+Df = pd.read_csv(‘Market_Basket_Optimisation.csv’, header=None)
+
+# drop null values
+Df.dropna(inplace=True)
+
+# convert categorical values to numeric using one-hot encoding
+Te = TransactionEncoder()
+Te_ary = te.fit(df.values).transform(df.values)
+Df = pd.DataFrame(te_ary, columns=te.columns_)
+
+# generate frequent itemsets using apriori algorithm
+Frequent_itemsets = apriori(df, min_support=0.01, use_colnames=True)
+
+# generate association rules from frequent itemsets
+Rules = association_rules(frequent_itemsets, metric=”lift”, min_threshold=1)
+
+# display information
+Print(“Original Dataset:\n”)
+Print(df.head())
+Print(“\nFrequent Itemsets:\n”)
+Print(frequent_itemsets)
+Print(“\nAssociation Rules:\n”)
+Print(rules)
